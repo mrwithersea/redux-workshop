@@ -41,7 +41,9 @@ Note:
 
 ```javascript
 export const SIMPLE_ACTION = 'SIMPLE_ACTION';
+```
 
+```javascript
 onClick = () => {
 	this.props.dispatch({ type: SIMPLE_ACTION, value: this.input.value });
 };
