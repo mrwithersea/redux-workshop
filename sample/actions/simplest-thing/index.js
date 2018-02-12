@@ -5,7 +5,7 @@ class SimplestThingThatCouldPossiblyWork extends React.Component {
 
   onClick = () => {
     this.props.dispatch({ type: 'SIMPLE ACTION', value: this.input.value });
-  }
+  };
 
   render() {
     return (
@@ -17,4 +17,4 @@ class SimplestThingThatCouldPossiblyWork extends React.Component {
   }
 }
 
-export default connect()(SimplestThingThatCouldPossiblyWork);
+export const SimplestThing = connect()(SimplestThingThatCouldPossiblyWork);
