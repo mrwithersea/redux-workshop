@@ -18,6 +18,3 @@ class SimplestThingThatCouldPossiblyWork extends React.Component {
 }
 
 export default connect(null, null)(SimplestThingThatCouldPossiblyWork);
-
-//More code down here
-//Just to prove it works
