@@ -11,10 +11,10 @@ class SimplestThingThatCouldPossiblyWork extends React.Component {
     return (
       <div>
         <input ref={c => this.input = c} type="text" />
-        <button onClick={onClick}>Submit</button>
+        <button onClick={this.onClick}>Submit</button>
       </div>
     );
   }
 }
 
-export connect(null, null)(SimplestThingThatCouldPossiblyWork);
+export default connect(null, null)(SimplestThingThatCouldPossiblyWork);
