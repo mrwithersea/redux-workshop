@@ -113,6 +113,10 @@ Note:
 
 ---
 
+### Simple doesn't stay simple for long
+
+---
+
 ```javascript
 switch (action.type) {
 	case 'VERIFY_USER_REQUEST': {
