@@ -31,7 +31,7 @@ Note:
 
 (Connect your React component to the Redux store to provide dispatch as a prop)
 @[10-17]
-@[6-8](Directly reference dispatch from your onClick handler)
+@[6-8, 20](Directly reference dispatch from your onClick handler)
 
 ---?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8&lang=scala&title=Scala GIST
 
