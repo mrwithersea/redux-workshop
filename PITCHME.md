@@ -12,14 +12,14 @@
 - Functional purity |
 
 Note:
-Pushing state to the edges of our system
-Why not MV[?] - view updates model, which updates another model, which updates a view
-State is not changing unintentionally
-Pure functions - better reasoning about code, avoiding non-obvious dependencies
+- Pushing state to the edges of our system
+- Why not MV[?] - view updates model, which updates another model, which updates a view
+- State is not changing unintentionally
+- Pure functions - better reasoning about code, avoiding non-obvious dependencies
 
 ---
 
-## The heart of redux; POJOs
+## The heart of redux; POJO
 
 ```javascript
 // Every action is just a plain old javascript object
@@ -28,6 +28,10 @@ Pure functions - better reasoning about code, avoiding non-obvious dependencies
 ```
 
 ---?code=sample/actions/simplest-thing/index.js&lang=javascript
+
+@[10-17]
+@[20](Connect your React component to the Redux store to provide dispatch as a prop)
+@[6-8](Directly reference dispatch from your onClick handler)
 
 ---?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8&lang=scala&title=Scala GIST
 
