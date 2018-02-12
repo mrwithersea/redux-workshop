@@ -28,6 +28,10 @@ Note:
 
 ---
 
+# Actions
+
+---
+
 ## The heart of redux
 
 ```javascript
@@ -77,24 +81,98 @@ Note:
 
 ---
 
-## One step further - Flux Standard Actions
+## Next step? - Flux Standard Actions
 
 ```javascript
 
 ///Basic flux standard action
 {
-	type: SIMPLE_ACTION,
-	payload: {
-		value: 123456,
-	}
+  type: SIMPLE_ACTION,
+  payload: {
+    value: 123456,
+  }
 }
 
 ///Error action
 {
-	type: SIMPLE_ACTION,
-	payload: new Error('Error in simple action'),
-	error: true,
+  type: SIMPLE_ACTION,
+  payload: new Error('Error in simple action'),
+  error: true,
 }
 
 ```
+---
+
+# Reducers
+
+---
+
+## Start with the simplest thing that could possibly work
+
+---?code=sample/reducers/simplest-thing/index.js&lang=javascript
+
+---
+
+```javascript
+switch (action.type) {
+	case 'VERIFY_USER_REQUEST': {
+		return { ...state, isLoading: true };
+	}
+	case 'CLEAR_ERRORS': {
+		return { ...state, error: null };
+	}
+	case 'ACTIVATE_USER_REQUEST': {
+		return { ...state, isLoading: true };
+	}
+	case 'ACTIVATION_CODE_IN_URL': {
+		return { ...state, code: action.code };
+	}
+	case 'ACTIVATION_FIELD_CHANGE': {
+		return { ...state, [action.fieldName]: action.fieldValue };
+	}
+	case 'VERIFY_USER_SUCCESS': {
+		const { code, email_address, first_name, date_of_birth } = action.result;
+		return {
+			...state,
+			isLoading: false,
+			code,
+			email: email_address,
+			name: first_name,
+			dateOfBirth: date_of_birth,
+			isVerified: true,
+			error: null,
+		};
+	}
+	case 'RESET_ACTIVATION_FORM': {
+		return {
+			...state,
+			isLoading: false,
+			code: '',
+			email: '',
+			name: '',
+			dateOfBirth: '',
+			dob: {
+				day: '',
+				month: '',
+				year: '',
+			},
+			isVerified: false,
+			error: null,
+		};
+	}
+	case 'VERIFY_USER_FAILURE': {
+		return {
+			...state,
+			isLoading: false,
+			error: findErrorMappingEntry(action),
+		};
+	}
+	case 'ACTIVATE_USER_FAILURE': {
+		return { ...state, isLoading: false, error: findErrorMappingEntry(action) };
+	}
+	default:
+		return state;
+}
+```
+
 ---
