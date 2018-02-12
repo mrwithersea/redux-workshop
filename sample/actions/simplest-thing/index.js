@@ -17,4 +17,4 @@ class SimplestThingThatCouldPossiblyWork extends React.Component {
   }
 }
 
-export default connect(null, null)(SimplestThingThatCouldPossiblyWork);
+export default connect()(SimplestThingThatCouldPossiblyWork);

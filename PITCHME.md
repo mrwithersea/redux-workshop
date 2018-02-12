@@ -24,12 +24,21 @@ Note:
 ```javascript
 /// Every action is just a plain old javascript object
 { type: 'something happened', value: 123456 }
-
 ```
 
 ---?code=sample/actions/simplest-thing/index.js&lang=javascript
 
 @[6-8](Directly reference dispatch from your onClick handler)
 @[10-20](Connect your component to make dispatch available on props)
+
+---
+
+```javascript
+export const SIMPLE_ACTION = 'SIMPLE_ACTION';
+
+onClick = () => {
+	this.props.dispatch({ type: SIMPLE_ACTION, value: this.input.value });
+};
+```
 
 ---
