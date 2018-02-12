@@ -30,6 +30,6 @@ Note:
 ---?code=sample/actions/simplest-thing/index.js&lang=javascript
 
 @[6-8](Directly reference dispatch from your onClick handler)
-@[18-20](Connect your component to make dispatch available on props)
+@[16-20](Connect your component to make dispatch available on props)
 
 ---
