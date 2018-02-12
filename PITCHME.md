@@ -1,66 +1,37 @@
-# Black Binary
+# Redux Workshop
 
-### A GitPitch Presentation Template
-
----
-
-## Tips!
-
-<br>
-
-@fa[arrows gp-tip](Press F to go Fullscreen)
-
-@fa[microphone gp-tip](Press S for Speaker Notes)
+### All the boilerplate
 
 ---
 
-## Template Features
+## Why did we choose Redux?
 
-- Code Presenting |
-- Repo Source, Static Blocks, GIST |
-- Custom CSS Styling |
-- Slideshow Background Image |
-- Slide-specific Background Images |
-- Custom Logo, TOC, and Footnotes |
+- Abstraction of our state from our UI |
+- Predictable behaviour |
+- Immutability |
+- Functional purity |
 
----?code=sample/go/server.go&lang=golang&title=Golang File
+Note:
+Pushing state to the edges of our system
+Why not MV[?] - view updates model, which updates another model, which updates a view
+State is not changing unintentionally
+Pure functions - better reasoning about code, avoiding non-obvious dependencies
+
+---
+
+## The heart of redux; POJOs
+
+```javascript
+// Every action is just a plain old javascript object
+{ type: 'SOMETHING HAPPENED', value: 123456 }
+
+```
+
+---?code=sample/actions/simplest-thing/index.js&lang=js
 
 @[1,3-6](Present code found within any repo source file.)
 @[8-18](Without ever leaving your slideshow.)
 @[19-28](Using GitPitch code-presenting with (optional) annotations.)
-
----
-
-@title[JavaScript Block]
-
-<p><span class="slide-title">JavaScript Block</span></p>
-
-```javascript
-// Include http module.
-var http = require("http");
-
-// Create the server. Function passed as parameter
-// is called on every request made.
-http.createServer(function (request, response) {
-  // Attach listener on end event.  This event is
-  // called when client sent, awaiting response.
-  request.on("end", function () {
-    // Write headers to the response.
-    // HTTP 200 status, Content-Type text/plain.
-    response.writeHead(200, {
-      'Content-Type': 'text/plain'
-    });
-    // Send data and end response.
-    response.end('Hello HTTP!');
-  });
-
-// Listen on the 8080 port.
-}).listen(8080);
-```
-
-@[1,2](You can present code inlined within your slide markdown too.)
-@[9-17](Displayed using code-syntax highlighting just like your IDE.)
-@[19-20](Again, all of this without ever leaving your slideshow.)
 
 ---?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8&lang=scala&title=Scala GIST
 
