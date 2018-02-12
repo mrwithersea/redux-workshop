@@ -7,7 +7,7 @@
 theme : moon
 theme-override : assets/css/PITCHME.css
 # theme-override : assets/css/PITCHME.codemax.css
-highlight : monokai
+highlight : ir-black
 logo : assets/image/logo.png
 transition : none
 published : true
