@@ -27,11 +27,7 @@ Pure functions - better reasoning about code, avoiding non-obvious dependencies
 
 ```
 
----?code=sample/actions/simplest-thing/index.js&lang=js
-
-@[1,3-6](Present code found within any repo source file.)
-@[8-18](Without ever leaving your slideshow.)
-@[19-28](Using GitPitch code-presenting with (optional) annotations.)
+---?code=sample/actions/simplest-thing/index.js&lang=javascript
 
 ---?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8&lang=scala&title=Scala GIST
 
