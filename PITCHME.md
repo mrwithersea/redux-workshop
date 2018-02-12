@@ -39,7 +39,7 @@ Note:
 
 ### To prevent string errors in our reducer code we could export a const
 
----?code=sample/actions/first_round/index.js&lang=javascript
+---?code=sample/actions/first-round/index.js&lang=javascript
 
 @[4,8-10]
 
