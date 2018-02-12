@@ -56,9 +56,9 @@ Note:
 
 ### To share actions between components we could use an action creator
 
----?code=sample/actions/action-creators/actions.js&lang=javascript
+---?code=sample/actions/action-creators/actions.js&lang=javascript&title=actions.js
 
----?code=sample/actions/action-creators/index.js&lang=javascript
+---?code=sample/actions/action-creators/index.js&lang=javascript&title=component.js
 
 ---
 
