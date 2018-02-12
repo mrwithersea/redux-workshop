@@ -37,16 +37,10 @@ Note:
 
 ---
 
-### To prevent typo errors in our reducer code we could export a const
+### To prevent string errors in our reducer code we could export a const
 
-```javascript
-export const SIMPLE_ACTION = 'SIMPLE_ACTION';
-```
+---?code=sample/actions/first_round/index.js&lang=javascript
 
-```javascript
-onClick = () => {
-	this.props.dispatch({ type: SIMPLE_ACTION, value: this.input.value });
-};
-```
+@[4,8-10]
 
 ---
