@@ -33,6 +33,8 @@ Note:
 
 ---
 
+### To prevent typo errors in our reducer code we could export a const
+
 ```javascript
 export const SIMPLE_ACTION = 'SIMPLE_ACTION';
 
