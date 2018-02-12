@@ -26,6 +26,10 @@ Note:
 { type: 'something happened', value: 123456 }
 ```
 
+---
+
+## Start with the simplest thing that could possibly work
+
 ---?code=sample/actions/simplest-thing/index.js&lang=javascript
 
 @[6-8](Directly reference dispatch from your onClick handler)
