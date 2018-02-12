@@ -17,4 +17,7 @@ class SimplestThingThatCouldPossiblyWork extends React.Component {
   }
 }
 
-export const SimplestThing = connect()(SimplestThingThatCouldPossiblyWork);
+export default connect(null, null)(SimplestThingThatCouldPossiblyWork);
+
+//More code down here
+//Just to prove it works
