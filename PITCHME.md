@@ -19,6 +19,15 @@ Note:
 
 ---
 
+## Redux is not a black box
+
+---?gist=/gaearon/64e2c4adce2b4918c96c3db2b44d8f68&lang=javascript
+
+@[22,26](Actions)
+@[3-12](Reducer)
+
+---
+
 ## The heart of redux
 
 ```javascript
