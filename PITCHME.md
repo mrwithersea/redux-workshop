@@ -39,8 +39,31 @@ Note:
 
 ### To prevent string errors in our reducer code we could export a const
 
----?code=sample/actions/first-round/index.js&lang=javascript
+---?code=sample/actions/consts/index.js&lang=javascript
 
 @[4,8-10]
+
+---
+
+### To share actions between components we could use an action creator
+
+---?code=sample/actions/action-creators/actions.js&lang=javascript
+
+---?code=sample/actions/action-creators/index.js&lang=javascript
+
+---
+
+## What do Action Creators give us?
+
+- Abstraction |
+- Encapsulation |
+- Separation of Concerns |
+- Testability |
+
+Notes:
+- components don’t need to know about the low-level details of the action
+- all the details of an action are expressed in one place
+- components remain dumb and are unaware of the framework in place to handle state
+- the component can be tested with a simple mock, the action creator can be tested independently
 
 ---
