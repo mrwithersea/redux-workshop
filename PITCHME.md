@@ -83,16 +83,16 @@ Note:
 
 ///Basic flux standard action
 {
-	type: 'ADD_TODO',
+	type: SIMPLE_ACTION,
 	payload: {
-		text: 'Do something.',
+		value: 123456,
 	}
 }
 
 ///Error action
 {
-	type: 'ADD_TODO',
-	payload: new Error(),
+	type: SIMPLE_ACTION,
+	payload: new Error('Error in simple action'),
 	error: true,
 }
 
