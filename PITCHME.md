@@ -29,7 +29,7 @@ Note:
 
 ---?code=sample/actions/simplest-thing/index.js&lang=javascript
 
-@[10-17]
+@[10-17]()
 @[20](Connect your React component to the Redux store to provide dispatch as a prop)
 @[6-8](Directly reference dispatch from your onClick handler)
 
