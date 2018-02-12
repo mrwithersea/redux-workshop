@@ -29,9 +29,9 @@ Note:
 
 ---?code=sample/actions/simplest-thing/index.js&lang=javascript
 
-@[10-17]()
-@[20](Connect your React component to the Redux store to provide dispatch as a prop)
+@[10-17]
 @[6-8](Directly reference dispatch from your onClick handler)
+@[20](Connect your React component to the Redux store to provide dispatch as a prop)
 
 ---?gist=onetapbeyond/494e0fecaf0d6a2aa2acadfb8eb9d6e8&lang=scala&title=Scala GIST
 
