@@ -29,7 +29,7 @@ Note:
 
 ---?code=sample/actions/simplest-thing/index.js&lang=javascript
 
-@[10-17]
-@[6-8, 19](Directly reference dispatch from your onClick handler)
+@[6-8](Directly reference dispatch from your onClick handler)
+@[10-20]
 
 ---
