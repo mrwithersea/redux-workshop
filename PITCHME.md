@@ -69,10 +69,32 @@ Note:
 - Separation of Concerns |
 - Testability |
 
-Notes:
+Note:
 - components don’t need to know about the low-level details of the action
 - all the details of an action are expressed in one place
 - components remain dumb and are unaware of the framework in place to handle state
 - the component can be tested with a simple mock, the action creator can be tested independently
 
+---
+
+## One step further - Flux Standard Actions
+
+```javascript
+
+///Basic flux standard action
+{
+	type: 'ADD_TODO',
+	payload: {
+		text: 'Do something.',
+	}
+}
+
+///Error action
+{
+	type: 'ADD_TODO',
+	payload: new Error(),
+	error: true,
+}
+
+```
 ---
