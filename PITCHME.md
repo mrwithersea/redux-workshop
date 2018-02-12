@@ -182,3 +182,7 @@ switch (action.type) {
 ---?code=sample/reducers/object-mapping/index.js&lang=javascript
 
 ---
+
+## Part 2 - async actions and selectors
+
+---
