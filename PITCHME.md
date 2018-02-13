@@ -322,6 +322,6 @@ const simpleValueSelector = createSelector(
 
 ```
 
-@[](Memoized selectors only recalculate when the value of form.data or datastore.response change)
+(Memoized selectors only recalculate when the value of form.data or datastore.response change)
 
 ---
