@@ -285,6 +285,7 @@ assert.true(target.isDone());
 
 ```javascript
 
+///Basic signature of an epic
 function (action$: Observable<Action>, store: Store): Observable<Action>;
 
 const delayedSimpleActionEpic = action$ =>
