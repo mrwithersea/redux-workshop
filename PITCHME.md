@@ -348,7 +348,8 @@ const delayedSimpleActionEpic = action$ =>
 
 ```javascript
 
-// Memoized selector only recalculates when the value of form.data or datastore.response change
+// Memoized selector only recalculates when the value of form.data
+// or datastore.response changes
 const simpleValueSelector = createSelector(
   R.pathOr(0, ['form', 'data', 'value']),
   R.pathOr(0, ['datastore', 'response', 'value']),
