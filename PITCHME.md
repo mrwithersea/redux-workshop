@@ -183,10 +183,6 @@ switch (action.type) {
 
 ---
 
-## Part 2 - async actions and selectors
-
----
-
 # Async Actions
 
 ---
@@ -292,6 +288,35 @@ const delayedSimpleActionEpic = action$ =>
   action$.ofType(DELAYED_SIMPLE_ACTION)
     .delay(10000)
     .mapTo(simpleAction(action$.value));
+
+```
+---
+
+# Selectors
+
+---
+
+## Start with the simplest thing that could possibly work
+
+---?code=sample/selectors/simplest-thing/component.js&lang=javascript
+
+@[16](Our components now have knowledge of the shape of the store)
+
+---?code=sample/selectors/ramda/component.js&lang=javascript
+
+---?code=sample/selectors/ramda/selectors.js&lang=javascript
+
+---
+
+## Next steps? - Reselect
+
+```javascript
+
+const taxSelector = createSelector(
+   subtotalSelector,
+   taxPercentSelector,
+   (subtotal, taxPercent) => subtotal * (taxPercent / 100)
+ )
 
 ```
 ---
