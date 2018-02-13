@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { simpleAction } from './actions';
+import { delayedSimpleAction } from 'actions';
 
 class SimplestThingThatCouldPossiblyWork extends React.Component {
 
   onClick = () => {
-    this.props.simpleAction(this.input.value);
+    this.props.delayedSimpleAction(this.input.value);
   };
 
   render() {
@@ -18,4 +18,4 @@ class SimplestThingThatCouldPossiblyWork extends React.Component {
   }
 }
 
-export default connect(null, { simpleAction })(SimplestThingThatCouldPossiblyWork);
+export default connect(null, { delayedSimpleAction })(SimplestThingThatCouldPossiblyWork);

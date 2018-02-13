@@ -43,7 +43,7 @@ Note:
 
 ## Start with the simplest thing that could possibly work
 
----?code=sample/actions/simplest-thing/index.js&lang=javascript
+---?code=sample/actions/simplest-thing/component.js&lang=javascript
 
 @[6-8](Directly reference dispatch from your onClick handler)
 @[10-20](Connect your component to make dispatch available on props)
@@ -52,7 +52,7 @@ Note:
 
 ### To prevent string errors in our reducer code we could export a const
 
----?code=sample/actions/consts/index.js&lang=javascript
+---?code=sample/actions/consts/component.js&lang=javascript
 
 @[4,8-10]
 
@@ -62,7 +62,7 @@ Note:
 
 ---?code=sample/actions/action-creators/actions.js&lang=javascript&title=actions.js
 
----?code=sample/actions/action-creators/index.js&lang=javascript&title=component.js
+---?code=sample/actions/action-creators/component.js&lang=javascript&title=component.js
 
 ---
 
@@ -77,11 +77,11 @@ Note:
 - components don’t need to know about the low-level details of the action
 - all the details of an action are expressed in one place
 - components remain dumb and are unaware of the framework in place to handle state
-- the component can be tested with a simple mock, the action creator can be tested independently
+- the component can be tested with a mock, the action creator can be tested with simple i/o tests
 
 ---
 
-## Next step? - Flux Standard Actions
+## Next steps? - Flux Standard Actions
 
 ```javascript
 
@@ -109,7 +109,7 @@ Note:
 
 ## Start with the simplest thing that could possibly work
 
----?code=sample/reducers/simplest-thing/index.js&lang=javascript
+---?code=sample/reducers/simplest-thing/reducer.js&lang=javascript
 
 ---
 
@@ -179,10 +179,118 @@ switch (action.type) {
 }
 ```
 
----?code=sample/reducers/object-mapping/index.js&lang=javascript
+---?code=sample/reducers/object-mapping/reducer.js&lang=javascript
 
 ---
 
 ## Part 2 - async actions and selectors
 
+---
+
+# Async Actions
+
+---
+
+## Start with the simplest thing that could possibly work
+
+---?code=sample/async/simplest-thing/actions.js&lang=javascript
+
+@[8](We have to pass dispatch to the action creator to dispatch actions to the store)
+
+---?code=sample/async/simplest-thing/component.js&lang=javascript
+
+@[21-25](We've added awareness of the low-level details of the action and broken the contract)
+@[27](We can't use object literal shorthand in our connect statement)
+
+---
+
+## Enter Thunks
+
+---?code=sample/async/thunks/actions.js&lang=javascript
+
+@[8](Notice the order of our curried function has changed due to the thunk middleware)
+
+---?code=sample/async/thunks/component.js&lang=javascript
+
+@[27](We've gained back the object literal shorthand in our connect statement)
+
+---
+
+### Why not thunks?
+
+- We've added side effects to our action creators |
+- Testing is hard to do |
+
+---
+
+```javascript
+
+const fakeDispatch = sandbox.stub();
+fakeDispatch.onFirstCall().yields(fakeDispatch, () => fakeState).returns(Promise.resolve());
+fakeDispatch.onThirdCall().yields(fakeDispatch, () => fakeState).returns(Promise.resolve());
+
+setImmediate(() => {
+  assert(fakeDispatch.calledWith({
+    type: actionTypes.REQUEST_PRODUCTS
+  }));
+  assert(fakeDispatch.calledWith({
+    type: actionTypes.ERROR_REQUESTING_PRODUCTS,
+    error: testCase.error
+  }));
+  done();
+});
+
+```
+
+---
+
+## Sagas: A new hope
+
+---?code=sample/async/sagas/saga.js&lang=javascript
+
+@[15](Listen for an action type)
+
+---?code=sample/async/sagas/actions.js&lang=javascript
+
+---?code=sample/async/sagas/component.js&lang=javascript
+
+---
+
+### Testing is declarative and easy to reason about
+
+---
+
+```javascript
+
+const target = testSaga(delayedSimpleActionSaga)
+  .takeLatest(DELAYED_SIMPLE_ACTION, delayedSimpleAction)
+  .finish();
+
+assert.true(target.isDone());
+
+const target = testSaga(delayedSimpleAction)
+  .next(fakeValue)
+  .call(delay, 10000)
+  .next()  
+  .put(simpleAction(fakeValue))
+  .finish();
+
+assert.true(target.isDone());
+
+```
+
+---
+
+## Next steps? - Redux observable
+
+```javascript
+
+function (action$: Observable<Action>, store: Store): Observable<Action>;
+
+const delayedSimpleActionEpic = action$ =>
+  action$.ofType(DELAYED_SIMPLE_ACTION)
+    .delay(10000)
+    .mapTo(simpleAction(action$.value));
+
+```
 ---
