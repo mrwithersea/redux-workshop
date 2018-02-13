@@ -87,7 +87,7 @@ Note:
 
 ```
 
-///Basic flux standard action
+/// Basic flux standard action
 {
   type: SIMPLE_ACTION,
   payload: {
@@ -95,7 +95,7 @@ Note:
   }
 }
 
-///Error action
+/// Error action
 {
   type: SIMPLE_ACTION,
   payload: new Error('Error in simple action'),
@@ -189,7 +189,7 @@ switch (action.type) {
 
 ---?code=sample/reducers/object-mapping/reducer.js&lang=javascript
 
-[3-6](Each reducer is self-contained a testable)
+@[3-6](Each reducer is self-contained a testable)
 
 ---
 
@@ -239,11 +239,12 @@ function simpleActionReducer = createReducer(state, {
 ### Why not thunks?
 
 - We've added side effects to our action creators |
+- In complex scenarios thunks become inter-dependent |
 - Testing is hard to do |
 
 ---
 
-```
+```javascript
 
 const fakeDispatch = sandbox.stub();
 fakeDispatch.onFirstCall().yields(fakeDispatch, () => fakeState).returns(Promise.resolve());
@@ -261,6 +262,8 @@ setImmediate(() => {
 });
 
 ```
+
+@[2-3](And example of complex mocks needed to test a thunk)
 
 ---
 
@@ -305,10 +308,14 @@ assert.true(target.isDone());
 
 ```
 
-///Basic signature of an epic
+/// Basic signature of an epic
 function (action$: Observable<Action>, store: Store): Observable<Action>;
 
-///Epics observe up-stream actions as inputs and output down-stream actions
+```
+
+```javascript
+
+/// Epics observe up-stream actions as inputs and output down-stream actions
 const delayedSimpleActionEpic = action$ =>
   action$.ofType(DELAYED_SIMPLE_ACTION)
     .delay(10000)
@@ -341,7 +348,7 @@ const delayedSimpleActionEpic = action$ =>
 
 ```
 
-///Memoized selector only recalculates when the value of form.data or datastore.response change
+/// Memoized selector only recalculates when the value of form.data or datastore.response change
 const simpleValueSelector = createSelector(
   R.pathOr(0, ['form', 'data', 'value']),
   R.pathOr(0, ['datastore', 'response', 'value']),
