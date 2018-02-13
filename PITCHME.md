@@ -328,7 +328,7 @@ const delayedSimpleActionEpic = action$ =>
 
 ---
 
-## Start with the simplest thing that could possibly work
+### Start with the simplest thing that could possibly work
 
 ---?code=sample/selectors/simplest-thing/component.js&lang=javascript
 
