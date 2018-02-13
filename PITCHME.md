@@ -45,10 +45,10 @@ A gist from Redux creator Dan Abramov
 
 ### Start with the simplest thing that could possibly work
 
----?code=sample/actions/simplest-thing/component.js&lang=javascript
+---?code=sample/actions/simplest-thing/component.js&lang=python
 
 @[6-8](Directly reference dispatch from your onClick handler)
-@[10-20](Connect your component to make dispatch available on props)
+@[20](Connect your component to make dispatch available on props)
 
 ---
 
@@ -64,7 +64,7 @@ A gist from Redux creator Dan Abramov
 
 ---?code=sample/actions/action-creators/actions.js&lang=javascript&title=actions.js
 
----?code=sample/actions/action-creators/component.js&lang=javascript&title=component.js
+---?code=sample/actions/action-creators/component.js&lang=python&title=component.js
 
 ---
 
@@ -119,7 +119,7 @@ Note:
 
 ---
 
-```javascript
+```
 switch (action.type) {
 	case 'VERIFY_USER_REQUEST': {
 		return { ...state, isLoading: true };
@@ -243,7 +243,7 @@ function simpleActionReducer = createReducer(state, {
 
 ---
 
-```javascript
+```
 
 const fakeDispatch = sandbox.stub();
 fakeDispatch.onFirstCall().yields(fakeDispatch, () => fakeState).returns(Promise.resolve());
@@ -266,13 +266,13 @@ setImmediate(() => {
 
 ### Sagas: A new hope
 
----?code=sample/async/sagas/saga.js&lang=javascript
+---?code=sample/async/sagas/saga.js&lang=javascript&title=saga.js
 
 @[15](Listen for an action type)
 
----?code=sample/async/sagas/actions.js&lang=javascript
+---?code=sample/async/sagas/actions.js&lang=javascript&title=actions.js
 
----?code=sample/async/sagas/component.js&lang=javascript
+---?code=sample/async/sagas/component.js&lang=python&title=component.js
 
 ---
 
@@ -280,7 +280,7 @@ setImmediate(() => {
 
 ---
 
-```javascript
+```
 
 const target = testSaga(delayedSimpleActionSaga)
   .takeLatest(DELAYED_SIMPLE_ACTION, delayedSimpleAction)
@@ -303,11 +303,12 @@ assert.true(target.isDone());
 
 ## Next steps? redux-observable
 
-```javascript
+```
 
 ///Basic signature of an epic
 function (action$: Observable<Action>, store: Store): Observable<Action>;
 
+///Epics observe up-stream actions as inputs and output down-stream actions
 const delayedSimpleActionEpic = action$ =>
   action$.ofType(DELAYED_SIMPLE_ACTION)
     .delay(10000)
@@ -326,16 +327,21 @@ const delayedSimpleActionEpic = action$ =>
 
 @[16](Our components now have knowledge of the shape of the store)
 
----?code=sample/selectors/ramda/component.js&lang=javascript
+---
 
----?code=sample/selectors/ramda/selectors.js&lang=javascript
+### Abstract knowledge of the shape of our store to re-usable selectors
+
+---?code=sample/selectors/ramda/selectors.js&lang=javascript&title=selectors.js
+
+---?code=sample/selectors/ramda/component.js&lang=python&title=component.js
 
 ---
 
 ## Next steps? reselect
 
-```javascript
+```
 
+///Memoized selector only recalculates when the value of form.data or datastore.response change
 const simpleValueSelector = createSelector(
   R.pathOr(0, ['form', 'data', 'value']),
   R.pathOr(0, ['datastore', 'response', 'value']),
@@ -343,7 +349,5 @@ const simpleValueSelector = createSelector(
  )
 
 ```
-
-@[](Memoized selector only recalculates when the value of form.data or datastore.response change)
 
 ---
