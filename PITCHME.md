@@ -85,7 +85,7 @@ Note:
 
 ## Next steps? - Flux Standard Actions
 
-```javascript
+```
 
 ///Basic flux standard action
 {
@@ -322,6 +322,6 @@ const simpleValueSelector = createSelector(
 
 ```
 
-(Memoized selectors only recalculate when the value of form.data or datastore.response change)
+@[](Memoized selector only recalculates when the value of form.data or datastore.response change)
 
 ---
