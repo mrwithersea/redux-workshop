@@ -43,7 +43,7 @@ A gist from Redux creator Dan Abramov
 
 ---
 
-## Start with the simplest thing that could possibly work
+### Start with the simplest thing that could possibly work
 
 ---?code=sample/actions/simplest-thing/component.js&lang=javascript
 
@@ -52,7 +52,7 @@ A gist from Redux creator Dan Abramov
 
 ---
 
-### To prevent string errors in our reducer code we could export a const
+### To avoid action type errors in our reducer code we could export a const
 
 ---?code=sample/actions/consts/component.js&lang=javascript
 
@@ -83,7 +83,7 @@ Note:
 
 ---
 
-## Next steps? - Flux Standard Actions
+## Next steps? Flux Standard Actions
 
 ```
 
@@ -109,7 +109,7 @@ Note:
 
 ---
 
-## Start with the simplest thing that could possibly work
+### Start with the simplest thing that could possibly work
 
 ---?code=sample/reducers/simplest-thing/reducer.js&lang=javascript
 
@@ -181,34 +181,56 @@ switch (action.type) {
 }
 ```
 
+@[18-28]
+
+---
+
+### Simplify action lookup with object mapping
+
 ---?code=sample/reducers/object-mapping/reducer.js&lang=javascript
 
+[3-6](Each reducer is self-contained a testable)
+
+---
+
+## Next steps? redux-create-reducer
+
+```javascript
+
+import { createReducer } from 'redux-create-reducer';
+
+function simpleActionReducer = createReducer(state, {
+  [SIMPLE_ACTION]: simpleAction,
+  [ANOTHER_ACTION]: anotherAction
+});
+
+```
 ---
 
 # Async Actions
 
 ---
 
-## Start with the simplest thing that could possibly work
+### Start with the simplest thing that could possibly work
 
----?code=sample/async/simplest-thing/actions.js&lang=javascript
+---?code=sample/async/simplest-thing/actions.js&lang=javascript&title=actions.js
 
 @[8](We have to pass dispatch to the action creator to dispatch actions to the store)
 
----?code=sample/async/simplest-thing/component.js&lang=javascript
+---?code=sample/async/simplest-thing/component.js&lang=python&title=component.js
 
 @[21-25](We've added awareness of the low-level details of the action and broken the contract)
 @[27](We can't use object literal shorthand in our connect statement)
 
 ---
 
-## Enter Thunks
+### Enter Thunks
 
----?code=sample/async/thunks/actions.js&lang=javascript
+---?code=sample/async/thunks/actions.js&lang=javascript&title=actions.js
 
 @[8](Notice the order of our curried function has changed due to the thunk middleware)
 
----?code=sample/async/thunks/component.js&lang=javascript
+---?code=sample/async/thunks/component.js&lang=javascript&title=component.js
 
 @[27](We've gained back the object literal shorthand in our connect statement)
 
@@ -242,7 +264,7 @@ setImmediate(() => {
 
 ---
 
-## Sagas: A new hope
+### Sagas: A new hope
 
 ---?code=sample/async/sagas/saga.js&lang=javascript
 
@@ -279,7 +301,7 @@ assert.true(target.isDone());
 
 ---
 
-## Next steps? - Redux observable
+## Next steps? redux-observable
 
 ```javascript
 
@@ -310,7 +332,7 @@ const delayedSimpleActionEpic = action$ =>
 
 ---
 
-## Next steps? - Reselect
+## Next steps? reselect
 
 ```javascript
 

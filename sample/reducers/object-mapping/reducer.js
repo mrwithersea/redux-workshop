@@ -1,12 +1,12 @@
 import { SIMPLE_ACTION } from 'actions';
 
-const simpleActionReducer = (state, { value }) => ({
+const simpleAction = (state, { value }) => ({
   ...state,
   value,
 });
 
 const reducers = {
-  [SIMPLE_ACTION]: simpleActionReducer,
+  [SIMPLE_ACTION]: simpleAction,
 };
 
 export default (state = {}, action = {}) =>
