@@ -37,7 +37,7 @@ A gist from Redux creator Dan Abramov
 ## The heart of redux
 
 ```javascript
-/// Every action is just a plain old javascript object
+// Every action is just a plain old javascript object
 { type: 'something happened', value: 123456 }
 ```
 
@@ -87,7 +87,7 @@ Note:
 
 ```
 
-/// Basic flux standard action
+// Basic flux standard action
 {
   type: SIMPLE_ACTION,
   payload: {
@@ -95,7 +95,7 @@ Note:
   }
 }
 
-/// Error action
+// Error action
 {
   type: SIMPLE_ACTION,
   payload: new Error('Error in simple action'),
@@ -308,14 +308,14 @@ assert.true(target.isDone());
 
 ```
 
-/// Basic signature of an epic
+// Basic signature of an epic
 function (action$: Observable<Action>, store: Store): Observable<Action>;
 
 ```
 
 ```javascript
 
-/// Epics observe up-stream actions and output actions down-stream
+// Epics observe up-stream actions and output actions down-stream
 const delayedSimpleActionEpic = action$ =>
   action$.ofType(DELAYED_SIMPLE_ACTION)
     .delay(10000)
@@ -346,9 +346,9 @@ const delayedSimpleActionEpic = action$ =>
 
 ## Next steps? reselect
 
-```
+```javascript
 
-/// Memoized selector only recalculates when the value of form.data or datastore.response change
+// Memoized selector only recalculates when the value of form.data or datastore.response change
 const simpleValueSelector = createSelector(
   R.pathOr(0, ['form', 'data', 'value']),
   R.pathOr(0, ['datastore', 'response', 'value']),
