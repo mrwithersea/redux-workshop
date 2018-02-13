@@ -13,7 +13,7 @@ class SimplestThingThatCouldPossiblyWork extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  simpleValue: state.simpleForm.data.value,
+  simpleValue: state.form.data.value + state.datastore.response.value,
 });
 
 export default connect(mapStateToProps)(SimplestThingThatCouldPossiblyWork);

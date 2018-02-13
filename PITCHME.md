@@ -21,6 +21,8 @@ Note:
 
 ## Redux is not a black box
 
+A gist from Redux creator Dan Abramov
+
 ---?gist=gaearon/64e2c4adce2b4918c96c3db2b44d8f68&lang=javascript&title=Counter.js
 
 @[22,26](Actions)
@@ -312,11 +314,14 @@ const delayedSimpleActionEpic = action$ =>
 
 ```javascript
 
-const taxSelector = createSelector(
-   subtotalSelector,
-   taxPercentSelector,
-   (subtotal, taxPercent) => subtotal * (taxPercent / 100)
+const simpleValueSelector = createSelector(
+  R.pathOr(0, ['form', 'data', 'value']),
+  R.pathOr(0, ['datastore', 'response', 'value']),
+  R.sum
  )
 
 ```
+
+@[](Memoized selectors only recalculate when the value of form.data or datastore.response change)
+
 ---
