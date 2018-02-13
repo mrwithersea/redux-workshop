@@ -263,7 +263,7 @@ setImmediate(() => {
 
 ```
 
-@[2-3](And example of complex mocks needed to test a thunk)
+@[3-5](An example of complex mocks needed to test a thunk)
 
 ---
 
@@ -315,7 +315,7 @@ function (action$: Observable<Action>, store: Store): Observable<Action>;
 
 ```javascript
 
-/// Epics observe up-stream actions as inputs and output down-stream actions
+/// Epics observe up-stream actions and output actions down-stream
 const delayedSimpleActionEpic = action$ =>
   action$.ofType(DELAYED_SIMPLE_ACTION)
     .delay(10000)
